@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  background: radial-gradient(circle, rgb(167 167 167) 43%, rgb(16 16 16) 88%);
+}
+
+.card, .front-face,
+.back-face, .contents {
+  position: absolute;
+}
+
+/****************************************************
+* Card Settings
+****************************************************/
+
+.card {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 290px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.front-face, 
+.back-face {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('https://img.freepik.com/free-vector/matrix-style-binary-code-digital-falling-numbers-blue-background_1017-37387.jpg?semt=ais_hybrid&w=740&q=80');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+
+.contents {
+  left: 0;
+  top: 50%;
+  width: 100%;
+  perspective: 100px;
+  transform: translateY(-50%) translateZ(60px) scale(.94);
+}
+
+.icons { 
+  margin: 10px 0; 
+}
+
+.icons i {
+  color: #042f4b;
+  background: white;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+/****************************************************
+* Front Face
+****************************************************/
+
+.front p {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.front span {
+  color: white;
+  font-size: 12px;
+  font-weight: 300;
+}
+.tap{
+  display: hidden;
+}
+@midea (max-width:786px){
+  .tap{
+  display: block;
+}
+}
+
+.front p.bottom-bar::after{
+  content: '';
+  display: block;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 150px;
+  background: white;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.card:hover > .front-face {
+   transform: rotateY(-180deg); 
+}
+
+/****************************************************
+* Back Face
+****************************************************/
+
+.back { 
+  color: white
+}
+
+.back h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.back span { 
+  font-weight: 300;
+  font-size: 12px;
+  
+}
+
+.back-face { 
+  transform: rotateY(180deg);
+  background: linear-gradient(45deg, #0e0e0e 0%, #5a5a5a 100%);
+}
+
+.card:hover > .back-face {
+   transform: rotateY(0deg); 
+}
